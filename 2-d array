@@ -1,0 +1,43 @@
+2-D array
+
+import numpy as np
+ 
+# Creating 2D arrays
+array1 = np.array([[1, 2, 3], [4, 5, 6]])
+array2 = np.array([[7, 8, 9], [10, 11, 12]])
+ 
+# Addition
+result_addition = array1 + array2
+ 
+# Subtraction
+result_subtraction = array1 - array2
+ 
+# Element-wise multiplication
+result_multiplication = array1 * array2
+ 
+# Matrix multiplication (dot product)
+result_dot_product = np.dot(array1, array2.T)  # Transpose of array2 for proper matrix multiplication
+ 
+# Printing results
+print("Addition:\n", result_addition)
+print("Subtraction:\n", result_subtraction)
+print("Element-wise Multiplication:\n", result_multiplication)
+print("Dot Product:\n", result_dot_product)
+
+OUTPUT:
+
+Addition:
+ [[ 8 10 12]
+ [14 16 18]]
+ 
+Subtraction:
+ [[-6 -6 -6]
+ [-6 -6 -6]]
+ 
+Element-wise Multiplication:
+ [[ 7 16 27]
+ [40 55 72]]
+ 
+Dot Product:
+ [[ 50  68]
+ [122 167]]
