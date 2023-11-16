@@ -1,0 +1,65 @@
+OPERATIONS ON N-D ARRAYS
+
+import numpy as np
+ 
+# Create a 3x3 array filled with zeros
+zeros_array = np.zeros((3, 3))
+ 
+# Create a 3x3 array filled with ones
+ones_array = np.ones((3, 3))
+ 
+# Element-wise square root of an array
+sqrt_array = np.sqrt(ones_array)
+ 
+# Sum along a specific axis
+sum_axis0 = np.sum(zeros_array, axis=0)  # Sum along columns
+sum_axis1 = np.sum(ones_array, axis=1)   # Sum along rows
+ 
+# Reshape an array
+reshaped_array = np.reshape(np.arange(1, 10), (3, 3))
+ 
+# Indexing and slicing
+slice_array = reshaped_array[0:2, 1:3]  # Rows 0 to 1, Columns 1 to 2
+ 
+# Statistical operations
+mean_value = np.mean(reshaped_array)
+std_deviation = np.std(reshaped_array)
+ 
+print("Zeros Array:\n", zeros_array)
+print("Ones Array:\n", ones_array)
+print("Square Root of Ones Array:\n", sqrt_array)
+print("Sum along axis 0:\n", sum_axis0)
+print("Sum along axis 1:\n", sum_axis1)
+print("Reshaped Array:\n", reshaped_array)
+print("Sliced Array:\n", slice_array)
+print("Mean Value:\n", mean_value)
+print("Standard Deviation:\n", std_deviation)
+
+OUTPUT:
+Zeros Array:
+[[0. 0. 0.]
+[0. 0. 0.]
+[0. 0. 0.]]
+Ones Array:
+[[1. 1. 1.]
+[1. 1. 1.]
+[1. 1. 1.]]
+Square Root of Ones Array:
+[[1. 1. 1.]
+[1. 1. 1.]
+[1. 1. 1.]]
+Sum along axis 0:
+[0. 0. 0.]
+Sum along axis 1:
+[3. 3. 3.]
+Reshaped Array:
+[[1 2 3]
+[4 5 6]
+[7 8 9]]
+Sliced Array:
+[[2 3]
+[5 6]]
+Mean Value:
+5.0
+Standard Deviation:
+2.581988897471611
