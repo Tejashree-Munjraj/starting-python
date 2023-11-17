@@ -1,0 +1,35 @@
+import numpy as np
+ 
+# Creating a sample 2D array
+original_array = np.array([[1, 2, 3],
+                           [4, 5, 6]])
+ 
+# Transposing the array using transpose() function
+transposed_array1 = np.transpose(original_array)
+ 
+# Transposing the array using .T attribute
+transposed_array2 = original_array.T
+ 
+print("Original Array:")
+print(original_array)
+ 
+print("\nTransposed Array (using transpose()):")
+print(transposed_array1)
+ 
+print("\nTransposed Array (using .T attribute):")
+print(transposed_array2)
+
+OUTPUT:
+Original Array:
+[[1 2 3]
+[4 5 6]]
+ 
+Transposed Array (using transpose()):
+[[1 4]
+[2 5]
+[3 6]]
+ 
+Transposed Array (using .T attribute):
+[[1 4]
+[2 5]
+[3 6]]
