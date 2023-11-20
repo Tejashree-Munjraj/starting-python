@@ -1,0 +1,38 @@
+# Import NumPy library
+import numpy as np
+
+# Create the dataset as a NumPy array
+dataset = np.array([['Height', 'Weight', 'Gender'],
+                    [180, 80, 'M'],
+                    [165, 60, 'F'],
+                    [170, 70, 'M'],
+                    [175, 75, 'M'],
+                    [160, 50, 'F'],
+                    [185, 85, 'M'],
+                    [155, 45, 'F'],
+                    [190, 90, 'M'],
+                    [168, 58, 'F'],
+                    [172, 62, 'F']])
+
+# Separate the features and the target variable
+X = dataset[1:, 0:2] # Features are the first two columns
+y = dataset[1:, 2] # Target variable is the last column
+
+# Convert the features from string to float
+X = X.astype(np.float)
+
+# Scale the features to have zero mean and unit variance
+scaler = (X - np.mean(X, axis=0)) / np.std(X, axis=0) # Calculate the scaled features
+X = scaler # Replace the original features with the scaled ones
+
+# Encode the target variable using label encoding
+# Note: This is a simple encoding strategy, there are other methods as well
+labels, inverse = np.unique(y, return_inverse=True) # Find the unique labels and their indices
+encoded_data = inverse # Create a label encoded array
+y = encoded_data # Replace the original target variable with the encoded array
+
+# Print the preprocessed data
+print("Preprocessed features:")
+print(X)
+print("Preprocessed target variable:")
+print(y)
