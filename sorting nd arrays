@@ -1,0 +1,35 @@
+import numpy as np
+x = np.array([2, 1, 4, 3, 5])
+np.sort(x)
+out : array([1, 2, 3, 4, 5])
+x.sort()
+print(x)
+out : [1 2 3 4 5]
+x = np.array([2, 1, 4, 3, 5])
+i = np.argsort(x)
+print(i)
+out:[1 0 3 2 4]
+x[i]
+out: array([1, 2, 3, 4, 5])
+
+sorting along with rows and columns
+
+rand = np.random.RandomState(42)
+X = rand.randint(0, 10, (4, 6))
+print(X)
+[[6 3 7 4 6 9]
+ [2 6 7 4 3 7]
+ [7 2 5 4 1 7]
+ [5 1 4 0 9 5]]
+# sort each column of X
+np.sort(X, axis=0)
+array([[2, 1, 4, 0, 1, 5],
+       [5, 2, 5, 4, 3, 7],
+       [6, 3, 7, 4, 6, 7],
+       [7, 6, 7, 4, 9, 9]])
+# sort each row of X
+np.sort(X, axis=1)
+array([[3, 4, 6, 6, 7, 9],
+       [2, 3, 4, 6, 7, 7],
+       [1, 2, 4, 5, 7, 7],
+       [0, 1, 4, 5, 5, 9]])
