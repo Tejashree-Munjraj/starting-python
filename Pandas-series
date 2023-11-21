@@ -1,0 +1,48 @@
+import pandas as pd
+ 
+# Creating a Series from a list
+fruits = pd.Series(['Apple', 'Banana', 'Orange', 'Grapes'])
+ 
+# Displaying the Series
+print("Fruits Series:")
+print(fruits)
+ 
+# Accessing elements by index
+print("\nSecond fruit:", fruits[1])
+ 
+# Creating a Series with custom index
+quantities = pd.Series({'Apple': 5, 'Banana': 3, 'Orange': 8, 'Grapes': 2})
+ 
+# Displaying the Series with custom index
+print("\nQuantities Series:")
+print(quantities)
+ 
+# Performing operations on Series
+total_fruits = quantities + pd.Series({'Apple': 2, 'Banana': 1, 'Orange': 3, 'Grapes': 2})
+print("\nTotal Fruits after addition:")
+print(total_fruits)
+
+ Output:
+Fruits Series:
+ 
+0     Apple
+1    Banana
+2    Orange
+3    Grapes
+dtype: object
+ 
+Second fruit: Banana
+ 
+Quantities Series:
+Apple     5
+Banana    3
+Orange    8
+Grapes    2
+dtype: int64
+ 
+Total Fruits after addition:
+Apple      7.0
+Banana     4.0
+Orange    11.0
+Grapes     4.0
+dtype: float64
