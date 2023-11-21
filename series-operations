@@ -1,0 +1,82 @@
+
+import pandas as pd
+ 
+# Creating Series
+s = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])
+ 
+# Square root
+result_sqrt = s.apply(lambda x: x**0.5)
+ 
+# Exponential
+result_exp = s.apply(lambda x: 2**x)
+ 
+# Negation
+result_neg = -s
+ 
+# Absolute values
+result_abs = s.abs()
+ 
+# Logical operations
+result_gt_20 = s > 20
+ 
+# Displaying results
+print("Original Series:")
+print(s)
+ 
+print("\nSquare Root Result:")
+print(result_sqrt)
+ 
+print("\nExponential Result:")
+print(result_exp)
+ 
+print("\Negation Result:")
+print(result_neg)
+ 
+print("\nAbsolute Values Result:")
+print(result_abs)
+ 
+print("\nLogical Operation (Greater than 20) Result:")
+print(result_gt_20)
+
+output:
+Original Series:
+a    10
+b    20
+c    30
+d    40
+dtype: int64
+ 
+Square Root Result:
+a    3.162278
+b    4.472136
+c    5.477226
+d    6.324555
+dtype: float64
+ 
+Exponential Result:
+a        1024
+b     1048576
+c    1073741824
+d    1099511627776
+dtype: int64
+ 
+Negation Result:
+a   -10
+b   -20
+c   -30
+d   -40
+dtype: int64
+ 
+Absolute Values Result:
+a    10
+b    20
+c    30
+d    40
+dtype: int64
+ 
+Logical Operation (Greater than 20) Result:
+a    False
+b    False
+c     True
+d     True
+dtype: bool
