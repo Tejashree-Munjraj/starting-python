@@ -1,0 +1,73 @@
+# Creating Series
+s1 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+s2 = pd.Series([5, 6, 7, 8], index=['b', 'c', 'd', 'e'])
+ 
+# Addition
+result_add = s1 + s2
+ 
+# Subtraction
+result_sub = s1 - s2
+ 
+# Multiplication
+result_mul = s1 * s2
+ 
+# Division
+result_div = s1 / s2
+ 
+# Displaying results
+print("Original Series s1:")
+print(s1)
+ 
+print("\nOriginal Series s2:")
+print(s2)
+print(result_add)
+print(result_sub)
+print(result_mul)
+print(result_div) 
+
+OUTPUT:
+Original Series s1:
+a    1
+b    2
+c    3
+d    4
+dtype: int64
+ 
+Original Series s2:
+b    5
+c    6
+d    7
+e    8
+dtype: int64
+ 
+Addition Result:
+a     NaN
+b     7.0
+c     9.0
+d    11.0
+e     NaN
+dtype: float64
+ 
+Subtraction Result:
+a    NaN
+b   -3.0
+c   -3.0
+d   -3.0
+e    NaN
+dtype: float64
+ 
+Multiplication Result:
+a     NaN
+b    10.0
+c    18.0
+d    28.0
+e     NaN
+dtype: float64
+ 
+Division Result:
+a    NaN
+b    0.4
+c    0.5
+d    0.571429
+e    NaN
+dtype: float64
