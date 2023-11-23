@@ -1,0 +1,36 @@
+import pandas as pd
+import numpy as np
+ 
+# Creating a sample dataset with missing values
+data = {'EmployeeID': [1, 2, 3, 4],
+        'Salary': [50000, 60000, 75000, 55000],
+        'Years_of_Experience': [3, np.nan, 5, np.nan]}
+ 
+df = pd.DataFrame(data)
+ 
+# Displaying the original dataset
+print("Original Dataset:")
+print(df)
+ 
+# Imputing missing values with the mean of 'Years_of_Experience'
+mean_experience = df['Years_of_Experience'].mean()
+df['Years_of_Experience'].fillna(mean_experience, inplace=True)
+ 
+# Displaying the dataset after imputation
+print("\nDataset after Imputation:")
+print(df)
+
+Output 
+Original Dataset:
+   EmployeeID  Salary  Years_of_Experience
+0           1   50000                  3.0
+1           2   60000                  NaN
+2           3   75000                  5.0
+3           4   55000                  NaN
+ 
+Dataset after Imputation:
+   EmployeeID  Salary  Years_of_Experience
+0           1   50000                  3.0
+1           2   60000                  4.0
+2           3   75000                  5.0
+3           4   55000                  4.0
