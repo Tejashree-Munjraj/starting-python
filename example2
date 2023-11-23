@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+ 
+# Creating a sample dataset with missing values
+data = {'HouseID': [1, 2, 3, 4],
+        'Neighborhood': ['A', 'B', 'A', 'B'],
+        'Price': [300000, 450000, 320000, 500000],
+        'Square_Feet': [2000, np.nan, 1800, np.nan]}
+ 
+df = pd.DataFrame(data)
+ 
+# Displaying the original dataset
+print("Original Dataset:")
+print(df)
+ 
+# Imputing missing values with the median of 'Square_Feet' based on neighborhoods
+median_sqft_neighborhood = df.groupby('Neighborhood')['Square_Feet'].transform('median')
+df['Square_Feet'].fillna(median_sqft_neighborhood, inplace=True)
+ 
+# Displaying the dataset after imputation
+print("\nDataset after Imputation:")
+print(df)
+
+output:
+Original Dataset:
+   HouseID Neighborhood   Price  Square_Feet
+0        1            A  300000       2000.0
+1        2            B  450000          NaN
+2        3            A  320000       1800.0
+3        4            B  500000          NaN
+ 
+Dataset after Imputation:
+   HouseID Neighborhood   Price  Square_Feet
+0        1            A  300000       2000.0
+1        2            B  450000       5000.0
+2        3            A  320000       1800.0
+3        4            B  500000       5000.0
