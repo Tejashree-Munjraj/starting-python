@@ -1,0 +1,146 @@
+import pandas as pd
+ 
+# Creating sample data
+data1 = {'A': [1, 2, 3, 4], 'B': [5, 6, 7, 8]}
+data2 = {'A': [3, 4, 5, 6], 'B': [7, 8, 9, 10]}
+ 
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+ 
+# Append
+appended_df = df1.append(df2, ignore_index=True)
+ 
+# Diff
+diff_df = df1.diff()
+ 
+# Intersection
+intersection_df = pd.merge(df1, df2, how='inner')
+ 
+# Union
+union_df = pd.concat([df1, df2]).drop_duplicates().reset_index(drop=True)
+ 
+# isin
+isin_result = df1['A'].isin([2, 4])
+ 
+# Delete
+deleted_df = df1.drop(columns=['B'])
+ 
+# Drop
+dropped_row_df = df1.drop(0)
+ 
+# Insert
+inserted_df = df1.copy()
+inserted_df['C'] = [9, 10, 11, 12]
+ 
+# is-monotonic
+is_monotonic = df1['A'].is_monotonic
+ 
+# is-unique
+is_unique = df1['A'].is_unique
+ 
+# Unique
+unique_values = df1['A'].unique()
+ 
+# Displaying the results
+print("Appended DataFrame:")
+print(appended_df)
+ 
+print("\nDiff DataFrame:")
+print(diff_df)
+ 
+print("\nIntersection DataFrame:")
+print(intersection_df)
+ 
+print("\nUnion DataFrame:")
+print(union_df)
+ 
+print("\nisin Result:")
+print(isin_result)
+ 
+print("\nDeleted DataFrame:")
+print(deleted_df)
+ 
+print("\nDropped Row DataFrame:")
+print(dropped_row_df)
+ 
+print("\nInserted DataFrame:")
+print(inserted_df)
+ 
+print("\nis_monotonic Result:")
+print(is_monotonic)
+ 
+print("\nis_unique Result:")
+print(is_unique)
+ 
+print("\nUnique Values:")
+print(unique_values)
+
+
+Output :
+Appended DataFrame:
+   A   B
+0  1   5
+1  2   6
+2  3   7
+3  4   8
+4  3   7
+5  4   8
+6  5   9
+7  6  10
+ 
+Diff DataFrame:
+     A    B
+0  NaN  NaN
+1  1.0  1.0
+2  1.0  1.0
+3  1.0  1.0
+ 
+Intersection DataFrame:
+   A  B
+0  3  7
+1  4  8
+ 
+Union DataFrame:
+   A   B
+0  1   5
+1  2   6
+2  3   7
+3  4   8
+4  5   9
+5  6  10
+ 
+isin Result:
+0    False
+1     True
+2    False
+3     True
+Name: A, dtype: bool
+ 
+Deleted DataFrame:
+   A
+0  1
+1  2
+2  3
+3  4
+ 
+Dropped Row DataFrame:
+   A  B
+1  2  6
+2  3  7
+3  4  8
+ 
+Inserted DataFrame:
+   A  B   C
+0  1  5   9
+1  2  6  10
+2  3  7  11
+3  4  8  12
+ 
+is_monotonic Result:
+True
+ 
+is_unique Result:
+True
+ 
+Unique Values:
+[1 2 3 4]
