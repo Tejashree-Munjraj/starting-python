@@ -1,0 +1,38 @@
+The fillna() method in Python is often used to fill missing (NaN) values in a DataFrame. Here's a simple example using pandas:
+ 
+import pandas as pd
+import numpy as np
+ 
+# Create a larger sample DataFrame with missing values
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eve'],
+        'Age': [25, np.nan, 30, 22, np.nan],
+        'Salary': [50000, 60000, np.nan, np.nan, 75000],
+        'Department': ['HR', 'IT', 'Finance', np.nan, 'Marketing']}
+ 
+df = pd.DataFrame(data)
+ 
+print("Original DataFrame:")
+print(df)
+ 
+# Fill missing values with appropriate strategies
+df_filled = df.fillna({'Age': df['Age'].mean(), 'Salary': df['Salary'].median(), 'Department': 'Unknown'})
+ 
+print("\nDataFrame after filling missing values:")
+print(df_filled)
+
+OUTPUT:
+Original data frame:
+    Name   Age   Salary Department
+0  Alice  25.0  50000.0         HR
+1    Bob   NaN  60000.0         IT
+2 Charlie  30.0      NaN    Finance
+3  David  22.0      NaN        NaN
+4    Eve   NaN  75000.0  Marketing
+
+Dataframe after filling missing values:
+      Name   Age   Salary  Department
+0    Alice  25.0  50000.0          HR
+1      Bob  26.75  60000.0          IT
+2  Charlie  30.0  65000.0     Finance
+3    David  22.0  65000.0     Unknown
+4      Eve  26.75  75000.0   Marketing
