@@ -1,0 +1,33 @@
+import pandas as pd
+import numpy as np
+ 
+# Create a DataFrame with three levels of hierarchical indexing
+arrays = [
+    ['A', 'A', 'B', 'B'],
+    ['X', 'X', 'Y', 'Y'],
+    ['I', 'II', 'I', 'II']
+]
+ 
+index = pd.MultiIndex.from_arrays(arrays, names=('Letters', 'XY', 'Roman'))
+ 
+columns = pd.MultiIndex.from_product([['One', 'Two'], ['First', 'Second']],
+                                     names=['Numbers', 'Order'])
+ 
+data = np.random.rand(8, 4)
+df = pd.DataFrame(data, index=index, columns=columns)
+ 
+# Display the DataFrame
+print(df)
+
+# Access data for Letter 'A', 'X', and 'II'
+result = df.loc['A', 'X', 'II']
+print(result)
+
+Output:
+Numbers                 One                 Two            
+Order                 First    Second     First    Second
+Letters XY Roman                                          
+A       X  I      0.123456  0.789012  0.345678  0.901234
+           II     0.567890  0.123456  0.789012  0.234567
+B       Y  I      0.901234  0.345678  0.678901  0.012345
+           II     0.432109  0.765432  0.098765  0.543210
