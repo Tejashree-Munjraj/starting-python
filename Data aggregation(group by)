@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Creating a sample DataFrame
+data = {'Category': ['A', 'B', 'A', 'B', 'A', 'B'],
+        'Value': [10, 20, 30, 40, 50, 60]}
+df = pd.DataFrame(data)
+
+# Grouping by 'Category' and calculating the mean value for each group
+grouped_data = df.groupby('Category').mean()
+print(grouped_data)
+
+output :
+Value   Category       
+A            30
+B            40
