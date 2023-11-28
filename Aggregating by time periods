@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+
+# Creating a sample DataFrame with datetime index
+date_rng = pd.date_range(start='2023-01-01', end='2023-01-10', freq='D')
+data = {'Value': np.random.randint(1, 100, len(date_rng))}
+df = pd.DataFrame(data, index=date_rng)
+
+print("Original DataFrame:")
+print(df)
+print("\n")
+
+# Resampling time-series data to get the mean value for each week
+weekly_mean = df.resample('W').mean()
+
+print("Aggregated by Week:")
+print(weekly_mean)
+
+
+output:
+Original DataFrame:
+            Value
+2023-01-01     70
+2023-01-02     19
+2023-01-03     94
+2023-01-04     33
+2023-01-05     15
+2023-01-06     86
+2023-01-07     47
+2023-01-08     31
+2023-01-09     73
+2023-01-10     77
+
+Aggregated by Week:
+                Value
+2023-01-01  39.571429
+2023-01-08  56.000000
