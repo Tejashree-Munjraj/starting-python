@@ -1,0 +1,18 @@
+import pandas as pd
+
+# Creating a sample DataFrame
+data = {'Category': ['A', 'B', 'A', 'B', 'A', 'B'],
+        'Value1': [10, 20, 30, 40, 50, 60],
+        'Value2': [100, 200, 300, 400, 500, 600]}
+df = pd.DataFrame(data)
+
+# Grouping by 'Category' and calculating both mean and sum for 'Value1' and 'Value2'
+grouped_data = df.groupby('Category').agg({'Value1': ['mean', 'sum'], 'Value2': ['mean', 'sum']})
+print(grouped_data)
+
+output:
+            Value1     Value2     
+           mean  sum   mean  sum
+Category                         
+A            30   90    300  900
+B            40  120    400 1200
