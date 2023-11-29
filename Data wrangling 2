@@ -1,0 +1,50 @@
+# Importing libraries
+import pandas as pd
+
+# Sample dataset
+data = {
+    'Student_ID': [1, 2, 3, 4, 5],
+    'Name': ['John', 'Alice', 'Bob', 'Eva', 'Mike'],
+    'Age': [18, 20, 19, None, 22],
+    'Grade': ['A', 'B', 'C', 'A', 'B'],
+    'City': ['New York', 'San Francisco', 'Los Angeles', 'Chicago', 'Boston'],
+    'Score': [95, 89, 75, 98, 88]
+}
+
+df = pd.DataFrame(data)
+
+# Display the original dataset
+print("Original Dataset:")
+print(df)
+print("\n")
+
+# Handling Outliers: Clip 'Score' values to be within a reasonable range (e.g., 0 to 100)
+df['Score'] = df['Score'].clip(0, 100)
+
+# Data Reduction: Keeping only relevant columns
+df = df[['Student_ID', 'Name', 'Age', 'Grade']]
+
+# Data Formatting: Capitalize city names
+df['City'] = df['City'].str.capitalize()
+
+# Display the modified dataset
+print("Modified Dataset:")
+print(df)
+
+Output:
+Original Dataset:
+   Student_ID   Name   Age Grade           City  Score
+0           1   John  18.0     A       New York     95
+1           2  Alice  20.0     B  San Francisco     89
+2           3    Bob  19.0     C    Los Angeles     75
+3           4    Eva   NaN     A        Chicago     98
+4           5   Mike  22.0     B         Boston     88
+
+
+Modified Dataset:
+   Student_ID   Name   Age Grade
+0           1   John  18.0     A
+1           2  Alice  20.0     B
+2           3    Bob  19.0     C
+3           4    Eva   NaN     A
+4           5   Mike  22.0     B
