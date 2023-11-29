@@ -1,0 +1,50 @@
+import pandas as pd
+
+# Sample dataset
+data = {
+    'Student_ID': [1, 2, 3, 4, 5],
+    'Name': ['John', 'Alice', 'Bob', 'Eva', 'Mike'],
+    'Age': [18, 20, 19, None, 22],
+    'Grade': ['A', 'B', 'C', 'A', 'B'],
+    'City': ['New York', 'San Francisco', 'Los Angeles', 'Chicago', 'Boston']
+}
+
+df = pd.DataFrame(data)
+
+# Display the original dataset
+print("Original Dataset:")
+print(df)
+print("\n")
+
+# Data Cleaning: Handling Missing Values
+df['Age'].fillna(df['Age'].mean(), inplace=True)
+
+# Data Transformation: Adding a new column
+df['Is_Honor_Student'] = df['Grade'].apply(lambda x: True if x == 'A' else False)
+
+# Data Integration: Adding information from an external source
+city_population = {'New York': 8398748, 'San Francisco': 870887, 'Los Angeles': 3999759, 'Chicago': 2716000, 'Boston': 694583}
+df['City_Population'] = df['City'].map(city_population)
+
+# Display the modified dataset
+print("Modified Dataset:")
+print(df)
+
+OUTPUT:
+Original Dataset:
+   Student_ID   Name   Age Grade           City
+0           1   John  18.0     A       New York
+1           2  Alice  20.0     B  San Francisco
+2           3    Bob  19.0     C    Los Angeles
+3           4    Eva   NaN     A        Chicago
+4           5   Mike  22.0     B         Boston
+
+
+Modified Dataset:
+   Student_ID   Name   Age Grade           City  Is_Honor_Student  City_Population
+0           1   John  18.0     A       New York              True          8398748
+1           2  Alice  20.0     B  San Francisco             False           870887
+2           3    Bob  19.0     C    Los Angeles             False          3999759
+3           4    Eva  19.75     A        Chicago              True          2716000
+4           5   Mike  22.0     B         Boston             False           694583
+
