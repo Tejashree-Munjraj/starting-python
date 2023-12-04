@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+
+# DataFrame
+data = {
+    'Date': ['2023-01-01', '2023-01-01', '2023-01-01', '2023-01-02', '2023-01-02', '2023-01-02', '2023-01-03', '2023-01-03'],
+    'Product_Category': ['Electronics', 'Clothing', 'Electronics', 'Clothing', 'Electronics', 'Clothing', 'Electronics', 'Clothing'],
+    'Region': ['North', 'South', 'North', 'South', 'North', 'South', 'North', 'South'],
+    'Sales': [100, 150, 200, 250, 300, 120, 180, 220]
+}
+
+df = pd.DataFrame(data)
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Create a cross-tabulation
+cross_tab = pd.crosstab(index=[df['Date'], df['Region']], columns=df['Product_Category'], values=df['Sales'], aggfunc=np.sum, margins=True, margins_name='Total')
+
+print(cross_tab)
+
+Result:
+
+Product_Category  Clothing  Electronics  Total
+Date       Region                              
+2023-01-01 North          0          300    300
+           South        150            0    150
+           Total        150          300    450
+2023-01-02 North        250          300    550
+           South        120            0    120
+           Total        370          300    670
+2023-01-03 North        220          180    400
+           South          0            0      0
+           Total        220          180    400
