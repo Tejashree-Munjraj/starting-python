@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+
+# Sample DataFrame
+data = {
+    'Date': ['2023-01-01', '2023-01-01', '2023-01-02', '2023-01-02', '2023-01-03'],
+    'Product': ['A', 'B', 'A', 'B', 'A'],
+    'Category': ['Electronics', 'Clothing', 'Electronics', 'Clothing', 'Electronics'],
+    'Sales': [100, 150, 200, 250, 300]
+}
+
+df = pd.DataFrame(data)
+
+# Convert 'Date' column to datetime format
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Create a pivot table
+pivot_table = df.pivot_table(index=['Date', 'Product'], columns='Category', values='Sales', aggfunc=np.sum, fill_value=0)
+
+print(pivot_table)
+
+Resulting pivot table:
+
+Category            Clothing  Electronics
+Date       Product                      
+2023-01-01 A               0         100
+           B             150           0
+2023-01-02 A               0         200
+           B             250           0
+2023-01-03 A               0         300
