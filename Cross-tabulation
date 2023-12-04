@@ -1,0 +1,23 @@
+import pandas as pd
+
+# Sample DataFrame
+data = {
+    'Customer_ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Gender': ['Male', 'Female', 'Male', 'Female', 'Male', 'Male', 'Female', 'Male', 'Female', 'Male'],
+    'Product_Category': ['Electronics', 'Clothing', 'Electronics', 'Clothing', 'Electronics', 'Clothing', 'Electronics', 'Clothing', 'Electronics', 'Clothing'],
+    'Purchase_Amount': [100, 150, 200, 250, 300, 120, 180, 220, 280, 150]
+}
+
+df = pd.DataFrame(data)
+# Create a cross-tabulation
+cross_tab = pd.crosstab(index=df['Gender'], columns=df['Product_Category'], values=df['Purchase_Amount'], aggfunc='sum', margins=True, margins_name='Total')
+
+print(cross_tab)
+
+Result  :            
+
+Product_Category  Clothing  Electronics  Total
+Gender                                       
+Female                 480          360    840
+Male                   690          600   1290
+Total                 1170          960   2130
