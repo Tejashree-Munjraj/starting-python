@@ -1,0 +1,44 @@
+# Import necessary libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Generate some example data
+np.random.seed(42)
+X = 2 * np.random.rand(100, 1)  # Independent variable
+y = 4 + 3 * X + np.random.randn(100, 1)  # Dependent variable with some noise
+
+# Visualize the data
+plt.scatter(X, y, alpha=0.7, label='Data Points')
+plt.xlabel('Independent Variable (X)')
+plt.ylabel('Dependent Variable (y)')
+plt.title('Linear Regression Example Data')
+plt.legend()
+plt.show()
+
+# Create a linear regression model
+model = LinearRegression()
+
+# Fit the model to the data
+model.fit(X, y)
+
+# Retrieve the slope (coefficient) and y-intercept
+slope = model.coef_[0][0]
+intercept = model.intercept_[0]
+
+# Make predictions using the model
+X_new = np.array([[0], [2]])  # New data points
+y_pred = model.predict(X_new)
+
+# Visualize the regression line
+plt.scatter(X, y, alpha=0.7, label='Data Points')
+plt.plot(X_new, y_pred, 'r-', label='Regression Line')
+plt.xlabel('Independent Variable (X)')
+plt.ylabel('Dependent Variable (y)')
+plt.title('Linear Regression Example with Regression Line')
+plt.legend()
+plt.show()
+
+# Display the slope and intercept
+print(f'Slope (Coefficient): {slope}')
+print(f'Intercept: {intercept}')
