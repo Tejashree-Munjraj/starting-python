@@ -1,0 +1,46 @@
+# Import necessary libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# Generate example data for binary classification
+np.random.seed(42)
+X = 2 * np.random.rand(100, 1)  # Independent variable
+y = (4 + 3 * X + np.random.randn(100, 1)) > 5  # Binary target variable
+
+# Visualize the data
+plt.scatter(X, y, alpha=0.7, label='Data Points')
+plt.xlabel('Independent Variable (X)')
+plt.ylabel('Binary Target Variable (y)')
+plt.title('Logistic Regression Example Data')
+plt.legend()
+plt.show()
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create a logistic regression model
+model = LogisticRegression()
+
+# Fit the model to the training data
+model.fit(X_train, y_train)
+
+# Make predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+# Display the results
+print(f'Accuracy: {accuracy:.2f}')
+print('Confusion Matrix:')
+print(conf_matrix)
+
+OUTPUT:
+Accuracy: 0.85
+Confusion Matrix:
+[[8 2]
+ [1 9]]
